@@ -1,28 +1,76 @@
-/* General Body Styling */
+/* General Styling */
 body {
   font-family: 'Courier New', monospace;
-  background-color: #fff5f0;
-  margin: 0;
-  padding: 0;
+  background-color: #fff0f5;
   text-align: center;
+  margin: 0;
+  padding: 30px 10px;
   color: #5a3e36;
 }
 
 h1 {
-  margin-top: 30px;
-  color: #ff9580;
-  text-shadow: 1px 1px #ffdcd1;
-  font-size: 2.5rem;
+  color: #ff6f91;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px #ffe0e9;
 }
 
-/* Gallery Container */
+/* Buttons with Icons */
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.icon-image {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s;
+}
+
+.icon-image:hover {
+  transform: scale(1.1);
+}
+
+/* Panel Styles */
+.panel {
+  background: #fff8fb;
+  border: 4px dashed #ffb6c1;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+  display: none;
+}
+
+.panel h2 {
+  color: #ff5d8f;
+}
+
+.panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.panel ul li::before {
+  content: "🌸 ";
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #9c5b7c;
+  margin-top: 10px;
+}
+
+/* Image Gallery */
 .gallery {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   margin-top: 30px;
-  animation: fadeInImages 1s ease-out;
 }
 
 /* Floating Animation */
@@ -32,66 +80,52 @@ h1 {
   100% { transform: translateY(0); }
 }
 
-/* Fade In Animation */
-@keyframes fadeInImages {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Image Frame Container */
+/* Image Container */
 .image-container {
   position: relative;
-  display: inline-block;
   animation: gentleFloat 4s ease-in-out infinite;
 }
 
-/* Individual Image Styling */
-.gallery img {
-  width: 130px;
-  height: 130px;
+/* Image Frame and Effects */
+.image-container img {
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 20px;
-  border: 5px double #f8bfa8;
-  background: #fff8f4;
-  padding: 10px;
+  border: 6px solid #ffc4d6;
+  background-color: #fff;
+  padding: 6px;
   box-shadow:
-    0 4px 12px rgba(255, 183, 173, 0.4),
-    inset 0 0 10px rgba(255, 230, 215, 0.5);
+    0 8px 20px rgba(255, 173, 186, 0.5),
+    inset 0 0 10px rgba(255, 210, 220, 0.7);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
     filter 0.3s ease;
-  filter: brightness(96%) contrast(105%) sepia(5%);
 }
 
-/* Hover Effect */
-.gallery img:hover {
-  transform: scale(1.08);
+/* Hover Effects */
+.image-container img:hover {
+  transform: scale(1.07);
+  filter: brightness(108%) contrast(115%);
   box-shadow:
-    0 0 20px rgba(255, 166, 155, 0.5),
-    inset 0 0 10px rgba(255, 230, 215, 0.7);
-  filter: brightness(108%) contrast(115%) sepia(10%);
+    0 0 25px rgba(255, 160, 190, 0.6),
+    inset 0 0 12px rgba(255, 230, 240, 0.9);
 }
 
-/* Caption Styling */
+/* Caption Under Image */
 .image-caption {
   position: absolute;
   bottom: 5px;
   left: 0;
   width: 100%;
-  background: rgba(255, 192, 203, 0.6);
-  color: #5a3e36;
-  padding: 4px 0;
   font-size: 0.9rem;
+  color: #5a3e36;
+  background: rgba(255, 210, 220, 0.8);
+  padding: 4px 0;
+  border-radius: 0 0 16px 16px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  border-radius: 0 0 12px 12px;
 }
 
 /* Show Caption on Hover */

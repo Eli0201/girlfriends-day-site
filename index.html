@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Girlfriend’s Day 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Happy Girlfriend’s Day, My Love!</h1>
+
+  <!-- Envelope Icon -->
+  <img src="envelope.png" class="icon" alt="Envelope" onclick="toggleLetter()">
+
+  <!-- Letter Panel -->
+  <div class="panel paper" id="letterPanel" style="display: none;">
+    <button class="close-btn" onclick="toggleLetter()">✖</button>
+    <h2>💌 My Love Letter</h2>
+    <p>Hi Love,</p>
+    <p>You are my peace, my inspiration, and the best part of my every day. Thank you for always being with me — I love you endlessly. Happy Girlfriend’s Day!</p>
+    <p>— Gab 💖</p>
+  </div>
+
+  <!-- Gift Icon -->
+  <img src="gift.png" class="icon" alt="Gift" onclick="revealGift()">
+
+  <!-- Voucher Panel -->
+  <div class="panel paper" id="voucherPanel" style="display: none;">
+    <button class="close-btn" onclick="hideGift()">✖</button>
+    <h2>🎁 Special Vouchers</h2>
+    <ul>
+      <li>🍽️ Sizzle Kitchen Date Voucher</li>
+      <li>🛵 Unlimited Sundo Voucher 
+        <br>
+        <img src="scooter.jpg" alt="Scooter Icon" style="width: 32px; vertical-align: middle;">
+        <p><em>Disclaimer: Valid once I get my driving license 😅</em></p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <img src="her1.jpg" alt="Her Picture 1">
+    <img src="her2.jpg" alt="Her Picture 2">
+    <img src="her3.jpg" alt="Her Picture 3">
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function toggleLetter() {
+      const panel = document.getElementById("letterPanel");
+      panel.style.display = panel.style.display === "none" ? "block" : "none";
+    }
+
+    function revealGift() {
+      document.getElementById("voucherPanel").style.display = "block";
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function hideGift() {
+      document.getElementById("voucherPanel").style.display = "none";
+    }
+  </script>
+</body>
+</html>

@@ -1,67 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Girlfriend’s Day 💖</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>Happy Girlfriend’s Day 💕</h1>
 
-  <h1>Happy Girlfriend’s Day 💌</h1>
+    <div class="icons">
+      <img class="icon envelope" src="envelope.png" alt="Open Letter" onclick="toggleLetter()" />
+      <img class="icon gift" src="gift.png" alt="Open Gift" onclick="revealGift()" />
+    </div>
 
-  <!-- Envelope Button -->
-  <button class="icon-button" onclick="toggleLetter()">
-    <img src="envelope.png" alt="Envelope" class="icon-image">
-  </button>
+    <div id="letterPanel" class="panel hidden">
+      <h2>💌 My Letter to You</h2>
+      <p>
+        My dearest love,<br><br>
+        Every moment with you is a gift I cherish deeply. Thank you for being my constant light, my safe place, and the reason I smile every day. You are my world. Happy Girlfriend’s Day!<br><br>
+        Love always,<br>
+        Eli 💖
+      </p>
+      <button onclick="toggleLetter()">Close</button>
+    </div>
 
-  <!-- Letter Panel -->
-  <div class="panel" id="letterPanel">
-    <h2>💖 My Letter for You</h2>
-    <p>Hi love! Thank you for always being there for me. You’re the sunshine in my life, and I hope this small surprise makes you smile. I can’t wait to spend more days with you. 💕</p>
-  </div>
+    <div id="voucherPanel" class="panel hidden">
+      <h2>🎁 Your Vouchers!</h2>
+      <ul>
+        <li>🍽️ Sizzle Kitchen Date Voucher – One cozy date with me at Sizzle Kitchen in Maginhawa!</li>
+        <li>🛵 Unli Sundo Voucher – Unlimited rides *once I get my driver’s license!* 😅</li>
+      </ul>
+      <button onclick="closeVoucher()">Close</button>
+    </div>
 
-  <!-- Gift Button -->
-  <button class="icon-button" onclick="revealGift()">
-    <img src="gift.png" alt="Gift" class="icon-image">
-  </button>
-
-  <!-- Voucher Panel -->
-  <div class="panel" id="voucherPanel">
-    <h2>🎁 Surprise Voucher</h2>
-    <ul>
-      <li>🍽️ Sizzle Kitchen Date</li>
-      <li>🛵 Unlimited “Pasundo” Voucher (Effective in 31 Days 😅)</li>
-    </ul>
-    <p class="disclaimer">*Some terms and conditions apply. Like, I need my allowance muna 😆</p>
-  </div>
-
-  <!-- Pixel Art Gallery -->
-  <div class="gallery">
-    <div class="image-container">
+    <div class="gallery">
       <img src="her1.jpg" alt="Her 1">
-      <div class="image-caption">My Love 💕</div>
-    </div>
-    <div class="image-container">
       <img src="her2.jpg" alt="Her 2">
-      <div class="image-caption">My Cutie 🥰</div>
-    </div>
-    <div class="image-container">
       <img src="her3.jpg" alt="Her 3">
-      <div class="image-caption">My World 🌎</div>
     </div>
   </div>
 
   <script>
     function toggleLetter() {
-      const panel = document.getElementById('letterPanel');
-      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      const panel = document.getElementById("letterPanel");
+      panel.classList.toggle("hidden");
     }
 
     function revealGift() {
-      const panel = document.getElementById('voucherPanel');
-      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      const panel = document.getElementById("voucherPanel");
+      panel.classList.remove("hidden");
+      showConfetti();
+    }
+
+    function closeVoucher() {
+      document.getElementById("voucherPanel").classList.add("hidden");
+    }
+
+    function showConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = 1 + Math.random() * 2 + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
     }
   </script>
-
 </body>
 </html>

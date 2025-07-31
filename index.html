@@ -3,70 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Girlfriend’s Day 💖</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Happy Girlfriend's Day!</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1>Happy Girlfriend’s Day 💕</h1>
+  <h1>🌸 Happy Girlfriend’s Day, Love! 🌸</h1>
 
-    <div class="icons">
-      <img class="icon envelope" src="envelope.png" alt="Open Letter" onclick="toggleLetter()" />
-      <img class="icon gift" src="gift.png" alt="Open Gift" onclick="revealGift()" />
-    </div>
-
-    <div id="letterPanel" class="panel hidden">
-      <h2>💌 My Letter to You</h2>
-      <p>
-        My dearest love,<br><br>
-        Every moment with you is a gift I cherish deeply. Thank you for being my constant light, my safe place, and the reason I smile every day. You are my world. Happy Girlfriend’s Day!<br><br>
-        Love always,<br>
-        Eli 💖
-      </p>
-      <button onclick="toggleLetter()">Close</button>
-    </div>
-
-    <div id="voucherPanel" class="panel hidden">
-      <h2>🎁 Your Vouchers!</h2>
-      <ul>
-        <li>🍽️ Sizzle Kitchen Date Voucher – One cozy date with me at Sizzle Kitchen in Maginhawa!</li>
-        <li>🛵 Unli Sundo Voucher – Unlimited rides *once I get my driver’s license!* 😅</li>
-      </ul>
-      <button onclick="closeVoucher()">Close</button>
-    </div>
-
-    <div class="gallery">
-      <img src="her1.jpg" alt="Her 1">
-      <img src="her2.jpg" alt="Her 2">
-      <img src="her3.jpg" alt="Her 3">
-    </div>
+  <div class="icon-container">
+    <img src="envelope.png" alt="Open Letter" class="icon" onclick="toggleLetter()" />
+    <img src="gift.png" alt="Open Gift" class="icon" onclick="openGift()" />
   </div>
 
+  <div id="letterPanel" class="panel paper-panel">
+    <button class="close-btn" onclick="toggleLetter()">✖</button>
+    <h2>My Letter For You</h2>
+    <p>
+      Hi Love! 💌<br>
+      Just wanted to say how much you mean to me. Thank you for being my home, my comfort, and my sunshine. 
+      I’m so proud of you and everything you do. This day is all about celebrating the amazing person you are. 
+      I love you so much! 💖
+    </p>
+  </div>
+
+  <div id="voucherPanel" class="panel voucher-panel">
+    <button class="close-btn" onclick="closeGift()">✖</button>
+    <h2>🎁 Your Vouchers</h2>
+    <ul>
+      <li>🍽️ Sizzle Kitchen Date</li>
+      <li>🛵 Unli Sundo Voucher — <em>Valid once I get my driver’s license 😅</em></li>
+    </ul>
+  </div>
+
+  <div class="photo-gallery">
+    <img src="her1.jpg" alt="Her Photo 1" class="framed-photo"/>
+    <img src="her2.jpg" alt="Her Photo 2" class="framed-photo"/>
+    <img src="her3.jpg" alt="Her Photo 3" class="framed-photo"/>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+
   <script>
+    const letterPanel = document.getElementById('letterPanel');
+    const voucherPanel = document.getElementById('voucherPanel');
+
     function toggleLetter() {
-      const panel = document.getElementById("letterPanel");
-      panel.classList.toggle("hidden");
+      letterPanel.classList.toggle('show');
     }
 
-    function revealGift() {
-      const panel = document.getElementById("voucherPanel");
-      panel.classList.remove("hidden");
-      showConfetti();
+    function openGift() {
+      voucherPanel.classList.add('show');
+      launchConfetti();
     }
 
-    function closeVoucher() {
-      document.getElementById("voucherPanel").classList.add("hidden");
+    function closeGift() {
+      voucherPanel.classList.remove('show');
     }
 
-    function showConfetti() {
-      for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.animationDuration = 1 + Math.random() * 2 + "s";
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 3000);
+    // Confetti
+    function launchConfetti() {
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let pieces = [];
+      for (let i = 0; i < 150; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 5 + 2,
+          speedY: Math.random() * 3 + 1,
+          color: `hsl(${Math.random() * 360}, 100%, 70%)`
+        });
       }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          ctx.fillStyle = p.color;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+          p.y += p.speedY;
+          if (p.y > canvas.height) p.y = 0;
+        });
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+
+      setTimeout(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }, 3000);
     }
   </script>
 </body>

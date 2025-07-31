@@ -6,64 +6,62 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Happy Girlfriend’s Day, My Love!</h1>
 
-  <!-- Envelope Icon -->
-  <img src="envelope.png" class="icon" alt="Envelope" onclick="toggleLetter()">
+  <h1>Happy Girlfriend’s Day 💌</h1>
+
+  <!-- Envelope Button -->
+  <button class="icon-button" onclick="toggleLetter()">
+    <img src="envelope.png" alt="Envelope" class="icon-image">
+  </button>
 
   <!-- Letter Panel -->
-  <div class="panel paper" id="letterPanel" style="display: none;">
-    <button class="close-btn" onclick="toggleLetter()">✖</button>
-    <h2>💌 My Love Letter</h2>
-    <p>Hi Love,</p>
-    <p>You are my peace, my inspiration, and the best part of my every day. Thank you for always being with me — I love you endlessly. Happy Girlfriend’s Day!</p>
-    <p>— Gab 💖</p>
+  <div class="panel" id="letterPanel">
+    <h2>💖 My Letter for You</h2>
+    <p>Hi love! Thank you for always being there for me. You’re the sunshine in my life, and I hope this small surprise makes you smile. I can’t wait to spend more days with you. 💕</p>
   </div>
 
-  <!-- Gift Icon -->
-  <img src="gift.png" class="icon" alt="Gift" onclick="revealGift()">
+  <!-- Gift Button -->
+  <button class="icon-button" onclick="revealGift()">
+    <img src="gift.png" alt="Gift" class="icon-image">
+  </button>
 
   <!-- Voucher Panel -->
-  <div class="panel paper" id="voucherPanel" style="display: none;">
-    <button class="close-btn" onclick="hideGift()">✖</button>
-    <h2>🎁 Special Vouchers</h2>
+  <div class="panel" id="voucherPanel">
+    <h2>🎁 Surprise Voucher</h2>
     <ul>
-      <li>🍽️ Sizzle Kitchen Date Voucher</li>
-      <li>🛵 Unlimited Sundo Voucher 
-        <br>
-        <img src="scooter.jpg" alt="Scooter Icon" style="width: 32px; vertical-align: middle;">
-        <p><em>Disclaimer: Valid once I get my driving license 😅</em></p>
-      </li>
+      <li>🍽️ Sizzle Kitchen Date</li>
+      <li>🛵 Unlimited “Pasundo” Voucher (Effective in 31 Days 😅)</li>
     </ul>
+    <p class="disclaimer">*Some terms and conditions apply. Like, I need my allowance muna 😆</p>
   </div>
 
-  <!-- Gallery -->
+  <!-- Pixel Art Gallery -->
   <div class="gallery">
-    <img src="her1.jpg" alt="Her Picture 1">
-    <img src="her2.jpg" alt="Her Picture 2">
-    <img src="her3.jpg" alt="Her Picture 3">
+    <div class="image-container">
+      <img src="her1.jpg" alt="Her 1">
+      <div class="image-caption">My Love 💕</div>
+    </div>
+    <div class="image-container">
+      <img src="her2.jpg" alt="Her 2">
+      <div class="image-caption">My Cutie 🥰</div>
+    </div>
+    <div class="image-container">
+      <img src="her3.jpg" alt="Her 3">
+      <div class="image-caption">My World 🌎</div>
+    </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     function toggleLetter() {
-      const panel = document.getElementById("letterPanel");
-      panel.style.display = panel.style.display === "none" ? "block" : "none";
+      const panel = document.getElementById('letterPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
     }
 
     function revealGift() {
-      document.getElementById("voucherPanel").style.display = "block";
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    }
-
-    function hideGift() {
-      document.getElementById("voucherPanel").style.display = "none";
+      const panel = document.getElementById('voucherPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
     }
   </script>
+
 </body>
 </html>
